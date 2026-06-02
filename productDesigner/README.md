@@ -30,6 +30,8 @@ point and describe your goal — it will sequence the right agents.
 | Agent | Folder | Job |
 |---|---|---|
 | Orchestrator | `orchestrator/` | Coordinates all agents toward your goal |
+| Project planner | `project-planner/` | Generates a tailored task plan from your kick-off template |
+| Continuous discovery | `continuous-discovery/` | Frames opportunities, maps assumptions, plans discovery (Teresa Torres methodology) |
 | Competitive research | `competitive-research/` | Researches how competitors approach a feature |
 | User research | `user-research/` | Synthesises interviews, surveys, session notes |
 | Insight synthesis | `insight-synthesis/` | Turns research into prioritised design insights |
@@ -44,6 +46,21 @@ point and describe your goal — it will sequence the right agents.
 ---
 
 ## Standard pipelines
+
+### Project kick-off (any new project)
+```
+Fill in project-kickoff-template.md
+        ↓
+Project planner agent
+        ↓
+Continuous discovery agent
+        ↓
+Competitive research agent  +  User research agent
+        ↓
+Insight synthesis agent
+        ↓
+Design brief agent
+```
 
 ### Discovery → brief
 ```
