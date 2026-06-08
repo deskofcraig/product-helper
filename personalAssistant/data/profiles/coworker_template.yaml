@@ -1,0 +1,37 @@
+# Coworker Profile Template
+# Copy this file and name it after the person, e.g. jane_smith.yaml
+# These files are in .gitignore — your people data stays local.
+
+name: "Full Name"
+email: "name@company.com"
+role: "Job Title"
+team: "Team Name"
+department: "Department"
+location: "City, Country"
+timezone: "Australia/Brisbane"
+
+# Your relationship to this person
+relationship: "peer"  # manager | direct_report | peer | stakeholder | cross_functional | external | other
+
+areas_of_expertise:
+  - "Topic or skill"
+  - "Another area"
+
+projects_involved:
+  - "project-id-1"
+  - "project-id-2"
+
+communication_style: "Prefers async, concise messages. Direct and to the point."
+
+best_contact_method: "slack"  # email | slack | teams | phone | meeting | other
+
+typical_availability: "Mon–Fri, 9am–5pm AEST. Slow on Fridays."
+
+involve_when:
+  - "Technical decisions about X"
+  - "Escalations involving Y"
+  - "Stakeholder communication for Z project"
+
+notes: |
+  Any other context about working with this person.
+  Multi-line notes are fine here.

@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "description": "A single task item in the to-do list",
+  "type": "object",
+  "required": ["id", "title", "status", "priority", "created_date"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the task (e.g. UUID or slug)",
+      "example": "task-2024-001"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short, actionable task title",
+      "example": "Write Q3 product review document"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full description of the task and what done looks like"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "completed", "delayed", "blocked", "cancelled"],
+      "description": "Current status of the task"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low"],
+      "description": "Task priority"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category or type of task",
+      "enum": ["work", "personal", "admin", "meeting_prep", "communication", "deep_work", "review", "planning", "learning", "other"]
+    },
+    "project_id": {
+      "type": "string",
+      "description": "ID of the related project (links to data/projects/)"
+    },
+    "estimated_minutes": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Estimated time to complete the task in minutes"
+    },
+    "actual_minutes": {
+      "type": ["integer", "null"],
+      "description": "Actual time taken once completed (null if not yet done)"
+    },
+    "due_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Due date in ISO 8601 format (YYYY-MM-DD)"
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the task was created"
+    },
+    "completed_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the task was completed (null if not yet done)"
+    },
+    "assigned_to": {
+      "type": ["string", "null"],
+      "description": "Name or email of person the task is assigned to (default: self)"
+    },
+    "depends_on": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of task IDs that must be completed before this task can start"
+    },
+    "blocks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of task IDs that cannot start until this task is complete"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags for filtering and grouping"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Any additional notes or context for the task"
+    },
+    "delay_reason": {
+      "type": ["string", "null"],
+      "description": "Reason for delay if status is delayed"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["manual", "agent_generated", "external_agent", "email", "calendar"],
+      "description": "How this task was created"
+    }
+  }
+}

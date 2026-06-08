@@ -1,0 +1,120 @@
+# Personal Assistant Agent — Configuration
+# Copy this file to config/config.yaml and fill in your values.
+# config/config.yaml is in .gitignore — never commit it.
+
+# ─────────────────────────────────────────
+# User
+# ─────────────────────────────────────────
+user:
+  name: "Your Name"
+  email: "your.email@example.com"
+  timezone: "Australia/Brisbane"       # IANA timezone string
+  working_hours:
+    start: "08:30"
+    end: "17:30"
+  working_days: [Mon, Tue, Wed, Thu, Fri]
+
+# ─────────────────────────────────────────
+# AI Provider
+# ─────────────────────────────────────────
+# This agent is AI-tool agnostic. Set the provider and model you want to use.
+# Supported providers: openai, anthropic, google, azure_openai, ollama, custom
+ai:
+  provider: "anthropic"                # Change to your provider
+  model: "claude-sonnet-4-6"          # Change to your preferred model
+  # api_key is read from config/secrets/.env — do not put it here
+  max_tokens: 4096
+  temperature: 0.3                     # Lower = more consistent/predictable
+
+# ─────────────────────────────────────────
+# Calendar Integration
+# ─────────────────────────────────────────
+calendar:
+  enabled: false
+  provider: "google"                   # google | microsoft | caldav | ical
+  # Credentials are set in config/secrets/.env
+  # For iCal (read-only): provide the .ics URL or file path below
+  ical_url: ""
+  lookahead_days: 7                    # How many days ahead to read
+
+# ─────────────────────────────────────────
+# Email Integration
+# ─────────────────────────────────────────
+email:
+  enabled: false
+  provider: "gmail"                    # gmail | outlook | imap
+  # Credentials are set in config/secrets/.env
+  max_emails: 50                       # Max emails to fetch per run
+  unread_only: true
+  label_filter: ""                     # Gmail label filter, e.g. "INBOX"
+
+# ─────────────────────────────────────────
+# To-Do List
+# ─────────────────────────────────────────
+todo:
+  file: "data/tasks/todo.json"
+  archive_completed: true              # Move completed tasks to archive
+  archive_file: "data/tasks/archive.json"
+
+# ─────────────────────────────────────────
+# Projects
+# ─────────────────────────────────────────
+projects:
+  directory: "data/projects/"
+  file_extensions: [".md", ".txt", ".yaml"]
+
+# ─────────────────────────────────────────
+# Coworker Profiles
+# ─────────────────────────────────────────
+profiles:
+  directory: "data/profiles/"
+
+# ─────────────────────────────────────────
+# External Agent Directories
+# ─────────────────────────────────────────
+# Point the agent at other agentic AI directories to pull in context
+external_agents:
+  enabled: false
+  sources:
+    - name: "Example Agent"
+      type: "local"                    # local | http
+      path: "/path/to/other/agent"     # For type: local
+      # url: "https://..."             # For type: http
+      # auth_header_env: "AGENT_TOKEN" # Env var for auth token (type: http)
+      read_files: ["tasks.json", "README.md"]
+
+# ─────────────────────────────────────────
+# Daily Briefing
+# ─────────────────────────────────────────
+briefing:
+  enabled: true
+  delivery:
+    method: "email"                    # email | file | stdout | webhook
+    recipient: "your.email@example.com"
+    output_file: "data/output/daily_briefing.md"  # If method: file
+    webhook_url: ""                    # If method: webhook
+  include_sections:
+    calendar: true
+    email_actions: true
+    tasks: true
+    overdue: true
+    people: true
+    week_ahead: true
+    focus_recommendation: true
+
+# ─────────────────────────────────────────
+# Learning / Time Estimation
+# ─────────────────────────────────────────
+learning:
+  enabled: true
+  store_file: "data/learning/time_estimates.json"
+  min_data_points_for_estimate: 3     # Need at least N data points before trusting average
+
+# ─────────────────────────────────────────
+# Logging
+# ─────────────────────────────────────────
+logging:
+  level: "INFO"                        # DEBUG | INFO | WARNING | ERROR
+  file: "data/logs/agent.log"
+  max_size_mb: 10
+  backup_count: 5

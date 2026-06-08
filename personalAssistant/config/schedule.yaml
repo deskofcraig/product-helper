@@ -1,0 +1,52 @@
+# Schedule Configuration
+# Defines when the agent runs automatically.
+# Uses cron syntax: minute hour day-of-month month day-of-week
+
+schedules:
+
+  # Daily morning briefing — runs at 07:30 Monday to Friday
+  daily_briefing:
+    enabled: true
+    cron: "30 7 * * 1-5"
+    task: "daily_briefing"
+    description: "Generate and send the daily task and focus briefing"
+
+  # Weekly review — runs Friday at 16:00
+  weekly_review:
+    enabled: true
+    cron: "0 16 * * 5"
+    task: "weekly_review"
+    description: "Generate a weekly summary and plan for next week"
+
+  # Task sync — runs every 2 hours during working hours on weekdays
+  task_sync:
+    enabled: false
+    cron: "0 9-17/2 * * 1-5"
+    task: "sync_tasks"
+    description: "Sync to-do list and update priorities"
+
+  # End of day wrap-up — runs at 17:00 Monday to Friday
+  end_of_day:
+    enabled: false
+    cron: "0 17 * * 1-5"
+    task: "end_of_day_wrap"
+    description: "Summarise what was completed and flag anything for tomorrow"
+
+# ─────────────────────────────────────────
+# How to run scheduled tasks
+# ─────────────────────────────────────────
+# Option 1: System cron (Linux/macOS)
+#   Add to crontab: crontab -e
+#   Example: 30 7 * * 1-5 cd /path/to/agenticHelpers && python runner/runner.py --task daily_briefing
+#
+# Option 2: macOS launchd
+#   See SETUP.md → Scheduling section
+#
+# Option 3: Windows Task Scheduler
+#   See SETUP.md → Scheduling section
+#
+# Option 4: GitHub Actions (if repo is on GitHub)
+#   See .github/workflows/daily_briefing.yml (create this yourself)
+#
+# Option 5: Any external scheduler (Zapier, Make, n8n, etc.)
+#   Point it at: python runner/runner.py --task daily_briefing

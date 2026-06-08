@@ -1,0 +1,23 @@
+[
+  {
+    "id": "task-example-001",
+    "title": "Example task — delete or replace this",
+    "description": "This is a placeholder task to show the correct format. Replace with your real tasks or let the agent generate them.",
+    "status": "pending",
+    "priority": "low",
+    "category": "admin",
+    "project_id": "",
+    "estimated_minutes": 15,
+    "actual_minutes": null,
+    "due_date": null,
+    "created_date": "2026-06-02",
+    "completed_date": null,
+    "assigned_to": null,
+    "depends_on": [],
+    "blocks": [],
+    "tags": ["example"],
+    "notes": "Delete this task once you have real tasks.",
+    "delay_reason": null,
+    "source": "manual"
+  }
+]

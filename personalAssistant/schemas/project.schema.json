@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project",
+  "description": "A project that groups related tasks and has its own timeline",
+  "type": "object",
+  "required": ["id", "name", "status", "start_date"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the project"
+    },
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "description": {
+      "type": "string",
+      "description": "What the project is, what it delivers, and why it matters"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["not_started", "in_progress", "on_hold", "completed", "cancelled", "at_risk"]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low"]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "target_end_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "actual_end_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Name or email of the project owner"
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Names or emails of stakeholders"
+    },
+    "team_members": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Names or emails of team members working on this project"
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "due_date"],
+        "properties": {
+          "name": { "type": "string" },
+          "due_date": { "type": "string", "format": "date" },
+          "status": { "type": "string", "enum": ["pending", "completed", "delayed"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "depends_on_projects": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Project IDs this project depends on"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "description_file": {
+      "type": "string",
+      "description": "Relative path to the full project description markdown file"
+    }
+  }
+}

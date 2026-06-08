@@ -1,0 +1,82 @@
+# User Profile
+# Copy to config/user_profile.yaml and fill in your values.
+# This file is in .gitignore — your personal data stays local.
+
+# ─────────────────────────────────────────
+# Identity
+# ─────────────────────────────────────────
+name: "Your Name"
+role: "Your Job Title"
+team: "Your Team Name"
+department: "Your Department"
+organisation: "Your Organisation"
+manager: "Manager Name"
+location: "City, Country"
+timezone: "Australia/Brisbane"
+
+# ─────────────────────────────────────────
+# Work Style Preferences
+# ─────────────────────────────────────────
+preferences:
+  # How many tasks to show in the daily focus list
+  max_daily_tasks: 8
+
+  # Prefer deep work blocks in the morning or afternoon
+  deep_work_preference: "morning"     # morning | afternoon | none
+
+  # Minimum block of uninterrupted time (minutes) before scheduling deep work
+  min_deep_work_block_minutes: 90
+
+  # How far ahead to plan in the weekly view
+  week_lookahead_days: 5
+
+  # Task categories to always include in daily briefing
+  always_include_categories:
+    - "deadlines"
+    - "meetings"
+    - "blockers"
+
+  # Task categories to deprioritise
+  deprioritise_categories:
+    - "admin"
+
+# ─────────────────────────────────────────
+# Communication Style
+# ─────────────────────────────────────────
+communication:
+  # How you prefer the agent to surface email actions
+  email_summary_style: "brief"        # brief | detailed
+
+  # Preferred reply window (hours) for non-urgent emails
+  email_reply_window_hours: 24
+
+  # People who always get same-day replies
+  priority_contacts:
+    - "manager@example.com"
+
+# ─────────────────────────────────────────
+# Key Focus Areas
+# ─────────────────────────────────────────
+# List your main areas of responsibility — the agent uses these to
+# prioritise tasks and categorise work.
+focus_areas:
+  - name: "Product Delivery"
+    weight: "high"
+    description: "Shipping features and managing delivery timelines"
+  - name: "Team Management"
+    weight: "high"
+    description: "1:1s, performance, hiring"
+  - name: "Stakeholder Communication"
+    weight: "medium"
+    description: "Updates, reporting, relationship management"
+  - name: "Personal Development"
+    weight: "low"
+    description: "Learning, reading, skills"
+
+# ─────────────────────────────────────────
+# Personal Tasks
+# ─────────────────────────────────────────
+personal:
+  include_personal_tasks: true
+  personal_task_file: "data/tasks/personal_todo.json"
+  personal_calendar_id: ""           # Separate calendar ID for personal events

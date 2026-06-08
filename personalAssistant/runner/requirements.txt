@@ -1,0 +1,24 @@
+# agenticHelpers — Python Dependencies
+# Install with: pip install -r runner/requirements.txt
+
+# Core
+pyyaml>=6.0
+python-dotenv>=1.0
+
+# AI Providers — install only the one(s) you use
+# anthropic>=0.25.0
+# openai>=1.30.0
+# google-generativeai>=0.5.0
+# ollama>=0.2.0
+
+# Calendar integrations — install only the one(s) you use
+# google-api-python-client>=2.120.0   # Google Calendar
+# google-auth-httplib2>=0.2.0
+# google-auth-oauthlib>=1.2.0
+# O365>=2.0.35                         # Microsoft Outlook / Graph
+# icalendar>=5.0.0                     # iCal (.ics) read-only
+
+# Email integrations — install only the one(s) you use
+# google-api-python-client>=2.120.0   # Gmail (already listed above)
+# O365>=2.0.35                         # Outlook (already listed above)
+# imap-tools>=1.6.0                    # Generic IMAP

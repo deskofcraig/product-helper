@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CoworkerProfile",
+  "description": "Profile for a coworker to help the agent make collaboration and communication recommendations",
+  "type": "object",
+  "required": ["name", "email", "role"],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "role": {
+      "type": "string",
+      "description": "Their job title or role"
+    },
+    "team": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "description": "City / timezone for scheduling awareness"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone string, e.g. Australia/Sydney"
+    },
+    "relationship": {
+      "type": "string",
+      "enum": ["manager", "direct_report", "peer", "stakeholder", "cross_functional", "external", "other"],
+      "description": "Your relationship to this person"
+    },
+    "areas_of_expertise": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Topics, domains, or skills this person is strong in"
+    },
+    "projects_involved": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Project IDs this person is involved in"
+    },
+    "communication_style": {
+      "type": "string",
+      "description": "Notes on how they prefer to communicate (e.g. async, direct, formal)"
+    },
+    "best_contact_method": {
+      "type": "string",
+      "enum": ["email", "slack", "teams", "phone", "meeting", "other"]
+    },
+    "typical_availability": {
+      "type": "string",
+      "description": "When they are usually reachable, e.g. 'Mornings AEST, slow to reply Fridays'"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Any other context about working with this person"
+    },
+    "involve_when": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Situations or task types where the agent should suggest involving this person"
+    }
+  }
+}
